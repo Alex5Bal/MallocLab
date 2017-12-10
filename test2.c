@@ -23,13 +23,14 @@ int main()
 {
   void *p1, *p2, *p3;
   arenaCheck();
-  p1 = malloc(254);
+  p1 = malloc(250);
   arenaCheck();
-  p2 = malloc(25400);
+  p2 = malloc(500);
   arenaCheck();
-  p3 = malloc(254);
+  p3 = malloc(1000);
   arenaCheck();
-  p3 = realloc(p3, 400);
+  printf("%8zx %8zx %8zx\n", p1, p2, p3);
+  p3 = realloc(p3, 4000);
   printf("After realloc()\n");
   arenaCheck();
   printf("%8zx %8zx %8zx\n", p1, p2, p3);
