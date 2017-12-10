@@ -44,7 +44,7 @@ int main()
     for(i = 0; i < 10000; i++)
       if (malloc(4) == 0)
 	break;
-    getutime(&t2);=
+    getutime(&t2);
     printf("%d malloc(4) required %f seconds\n", i, diffTimeval(&t2, &t1));
   }
   return 0;
