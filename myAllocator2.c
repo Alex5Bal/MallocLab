@@ -263,16 +263,16 @@ void *resizeRegion(void *r, size_t newSize) {
   if (oldSize >= newSize)	/* old region is big enough */
     return r;
 
-  else {
-	BlockPrefix_t *p = getNextPrefix(regionToPrefix(r));
-
-	if(p & p->allocated == 0) {
-		coalescedSize = computeUsableSpace(p) + oldSize;
-
-		if(coalescedSize >= newSize) {
-
-		}
-	}
+//  else {
+//	BlockPrefix_t *p = getNextPrefix(regionToPrefix(r));
+//
+//	if(p & p->allocated == 0) {
+//		coalescedSize = computeUsableSpace(p) + oldSize;
+//
+//		if(coalescedSize >= newSize) {
+//
+//		}
+//	}
 
 	else {		/* allocate new region & copy old data */
 		char *o = (char *)r;	/* treat both regions as char* */
