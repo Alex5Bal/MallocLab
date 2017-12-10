@@ -29,6 +29,7 @@ int main()
   arenaCheck();
   p3 = malloc(254);
   p3 = realloc(p3, 400);
+  printf("After realloc()");
   arenaCheck();
   printf("%8zx %8zx %8zx\n", p1, p2, p3);
   arenaCheck();
