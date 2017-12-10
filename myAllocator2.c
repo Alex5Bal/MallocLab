@@ -337,30 +337,29 @@ void *resizeRegion2(void *r, size_t newSize) {
 	else {
 		BlockPrefix_t *successorPrefix = getNextPrefix(regionToPrefix(r));
 
-		if(!successorPrefix->allocated) {
-			printf("Successor prefix found!\n");
-			coalescedSize = computeUsableSpace(successorPrefix) + oldSize;
+		printf("Successor prefix found!\n");
+		coalescedSize = computeUsableSpace(successorPrefix) + oldSize;
 
-			if(coalescedSize >= newSize) {
-				BlockPrefix_t *newPrefix = regionToPrefix(r);
-				BlockSuffix_t *newSuffix = successorPrefix->suffix;
+		if(coalescedSize >= newSize) {
+			BlockPrefix_t *newPrefix = regionToPrefix(r);
+			BlockSuffix_t *newSuffix = successorPrefix->suffix;
 
-				newPrefix->suffix = newSuffix;
-				newSuffix->prefix = newPrefix;
-				newPrefix->allocated = 1;
-			}
+			newPrefix->suffix = newSuffix;
+			newSuffix->prefix = newPrefix;
+			newPrefix->allocated = 1;
 		}
 
-		else {		/* allocate new region & copy old data */
-			char *o = (char *)r;	/* treat both regions as char* */
-			char *n = (char *)firstFitAllocRegion(newSize);
-			int i;
 
-			for (i = 0; i < oldSize; i++) /* copy byte-by-byte, should use memcpy */
-				n[i] = o[i];
-			freeRegion(o);		/* free old region */
-
-			return (void *)n;
-		}
+//		else {		/* allocate new region & copy old data */
+//			char *o = (char *)r;	/* treat both regions as char* */
+//			char *n = (char *)firstFitAllocRegion(newSize);
+//			int i;
+//
+//			for (i = 0; i < oldSize; i++) /* copy byte-by-byte, should use memcpy */
+//				n[i] = o[i];
+//			freeRegion(o);		/* free old region */
+//
+//			return (void *)n;
+//		}
 	}
 }
