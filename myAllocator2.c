@@ -295,6 +295,7 @@ void *resizeRegion(void *r, size_t newSize) {
 		BlockPrefix_t *successorPrefix = getNextPrefix(regionToPrefix(r));
 
 		if(successorPrefix && successorPrefix->allocated == 0) {
+			printf("Successor prefix found!\n");
 			coalescedSize = computeUsableSpace(successorPrefix) + oldSize;
 
 			if(coalescedSize >= newSize) {
