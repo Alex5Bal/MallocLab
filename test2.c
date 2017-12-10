@@ -28,7 +28,7 @@ int main()
   p2 = malloc(25400);
   arenaCheck();
   p3 = malloc(254);
-  realloc(p3, 400);
+  p3 = realloc(p3, 400);
   printf("%8zx %8zx %8zx\n", p1, p2, p3);
   arenaCheck();
   free(p2);
@@ -44,7 +44,7 @@ int main()
     for(i = 0; i < 10000; i++)
       if (malloc(4) == 0)
 	break;
-    getutime(&t2);
+    getutime(&t2);=
     printf("%d malloc(4) required %f seconds\n", i, diffTimeval(&t2, &t1));
   }
   return 0;
