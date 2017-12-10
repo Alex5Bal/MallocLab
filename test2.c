@@ -28,7 +28,7 @@ int main()
   p2 = malloc(25400);
   arenaCheck();
   p3 = malloc(254);
-  p3 = realloc(p3, 400);
+  //p3 = realloc(p3, 400);
   printf("%8zx %8zx %8zx\n", p1, p2, p3);
   arenaCheck();
   free(p2);
