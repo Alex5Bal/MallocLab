@@ -274,15 +274,14 @@ void *resizeRegion(void *r, size_t newSize) {
 //		}
 //	}
 
-	else {		/* allocate new region & copy old data */
-		char *o = (char *)r;	/* treat both regions as char* */
-		char *n = (char *)firstFitAllocRegion(newSize);
-		int i;
-		for (i = 0; i < oldSize; i++) /* copy byte-by-byte, should use memcpy */
-			n[i] = o[i];
-		freeRegion(o);		/* free old region */
-		return (void *)n;
-	}
-  }
+  else {		/* allocate new region & copy old data */
+	char *o = (char *)r;	/* treat both regions as char* */
+	char *n = (char *)firstFitAllocRegion(newSize);
+	int i;
+	for (i = 0; i < oldSize; i++) /* copy byte-by-byte, should use memcpy */
+		n[i] = o[i];
+	freeRegion(o);		/* free old region */
+	return (void *)n;
+ }
 }
 
