@@ -35,6 +35,9 @@ int main()
   p5 = malloc(150);
   arenaCheck();
   p6 = malloc(300);
+  arenaCheck();
+  p6 = realloc(1000);
+  arenaCheck();
 //  printf("%8zx %8zx %8zx\n", p1, p2, p3);
 //  p3 = realloc(p3, 2000);
 //  printf("After realloc()\n");
