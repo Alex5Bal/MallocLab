@@ -21,7 +21,7 @@ void getutime(struct timeval *t)
 
 int main()
 {
-  void *p1, *p2, *p3, *p4, *p5;
+  void *p1, *p2, *p3, *p4, *p5, *p6;
   arenaCheck();
   p1 = malloc(250);
   arenaCheck();
@@ -31,13 +31,15 @@ int main()
   arenaCheck();
   p4 = malloc(200);
   arenaCheck();
-  p5 = malloc(700);
+  free(p4);
+  p5 = malloc(150);
   arenaCheck();
+  p6 = malloc(300);
 //  printf("%8zx %8zx %8zx\n", p1, p2, p3);
 //  p3 = realloc(p3, 2000);
 //  printf("After realloc()\n");
 //  arenaCheck();
-  printf("%8zx %8zx %8zx %8zx %8zx\n", p1, p2, p3, p4, p5);
+  printf("%8zx %8zx %8zx %8zx %8zx\n", p1, p2, p3, p4, p5, p6);
   free(p5);
   arenaCheck();
   free(p4);

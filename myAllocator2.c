@@ -239,14 +239,20 @@ BlockPrefix_t *findNextFit(size_t s) {	/* find first block with usable space > s
 
 BlockPrefix_t *findBestFit(size_t s) {	/* find first block with usable space > s */
     BlockPrefix_t *p = arenaBegin;
+    BlockPrefix_t *bestMatch = NULL;
 
     while (p) {
     	if (!p->allocated && computeUsableSpace(p) >= s)
-    		return p;
+    		if((bestMatch == NULL) || (computeUsableSpace(p) < computeUsableSpace(best)))
+    			bestMatch = p;
+
     	p = getNextPrefix(p);
     }
 
-    return growArena(s);
+    if (bestMatch != NULL)
+    	return bestMatch;
+    else
+    	return growArena(s);
 }
 
 /* conversion between blocks & regions (offset of prefixSize */
