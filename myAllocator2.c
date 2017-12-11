@@ -243,7 +243,7 @@ BlockPrefix_t *findBestFit(size_t s) {	/* find first block with usable space > s
 
     while (p) {
     	if (!p->allocated && computeUsableSpace(p) >= s)
-    		if((bestMatch == NULL) || (computeUsableSpace(p) < computeUsableSpace(best)))
+    		if((bestMatch == NULL) || (computeUsableSpace(p) < computeUsableSpace(bestMatch)))
     			bestMatch = p;
 
     	p = getNextPrefix(p);
