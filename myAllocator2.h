@@ -13,6 +13,8 @@ typedef struct BlockSuffix_s {
 
 void arenaCheck(void);
 void *firstFitAllocRegion(size_t s);
+void *nextFitAllocRegion(size_t s);
+void *bestFitAllocRegion(size_t s);
 void freeRegion(void *r);
 void *resizeRegion(void *r, size_t newSize);
 void *resizeRegion2(void *r, size_t newSize);
