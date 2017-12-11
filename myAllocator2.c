@@ -440,7 +440,7 @@ void *resizeRegion2(void *r, size_t newSize) {
 			printf("First Trigger!");
 
 			p->suffix = successorPrefix->suffix;
-			//successorPrefix->suffix->prefix = p;
+			successorPrefix->suffix->prefix = p;
 
 			p->allocated = 1;
 		}
