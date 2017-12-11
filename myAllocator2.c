@@ -437,6 +437,7 @@ void *resizeRegion2(void *r, size_t newSize) {
 
 		if((!successorPrefix->allocated) && (mergeSize >= newSize)) {
 			BlockPrefix_t *p = regionToPrefix(r);
+			printf("First Trigger!");
 
 			p->suffix = successorPrefix->suffix;
 			//successorPrefix->suffix->prefix = p;
